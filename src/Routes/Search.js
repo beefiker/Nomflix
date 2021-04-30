@@ -1,1 +1,10 @@
-export default () => "Search";
+const Search = () => {
+  return (
+    <div>
+      <h1>Search</h1>
+    </div>
+  );
+};
+
+// export default () => "Search";
+export default Search;
