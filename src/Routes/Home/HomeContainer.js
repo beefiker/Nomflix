@@ -7,7 +7,7 @@ const HomeContainer = () => {
   const [upcoming, setUpcoming] = useState([]);
   const [popular, setPopular] = useState([]);
   const [error, setError] = useState([]);
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState("true");
 
   return (
     <HomePresenter nowPlaying={nowPlaying} upcoming={upcoming} popular={popular} error={error} loading={loading} />
