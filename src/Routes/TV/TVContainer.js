@@ -8,7 +8,7 @@ const TVContainer = () => {
   const [popular, setPopular] = useState([]);
   const [airingToday, setAiringToday] = useState([]);
   const [error, setError] = useState([]);
-  const [loading, setLoading] = useState("true");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,12 +29,11 @@ const TVContainer = () => {
       } catch {
         setError("Can't find TV Show information");
       } finally {
-        setLoading("false");
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
-  console.log(topRated, popular, airingToday);
   return (
     <TVPresenter topRated={topRated} popular={popular} airingToday={airingToday} error={error} loading={loading} />
   );

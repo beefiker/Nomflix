@@ -8,7 +8,7 @@ const HomeContainer = () => {
   const [upcoming, setUpcoming] = useState([]);
   const [popular, setPopular] = useState([]);
   const [error, setError] = useState([]);
-  const [loading, setLoading] = useState("true");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,12 +26,10 @@ const HomeContainer = () => {
         setNowPlaying(nowPlaying);
         setUpcoming(upcoming);
         setPopular(popular);
-
-        console.log(nowPlaying, upcoming, popular);
       } catch {
         setError("Can't find Movie information");
       } finally {
-        setLoading("false");
+        setLoading(false);
       }
     };
     fetchData();
