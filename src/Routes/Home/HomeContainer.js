@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { moviesApi } from "api";
+import React, { useState, useEffect } from "react";
 import HomePresenter from "./HomePresenter";
 
 const HomeContainer = () => {
@@ -8,6 +9,37 @@ const HomeContainer = () => {
   const [popular, setPopular] = useState([]);
   const [error, setError] = useState([]);
   const [loading, setLoading] = useState("true");
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const {
+  //         data: { results: nowPlaying },
+  //       } = await moviesApi.nowPlaying();
+  //       const {
+  //         data: { results: upcoming },
+  //       } = await moviesApi.upcoming();
+  //       const {
+  //         data: { results: popular },
+  //       } = await moviesApi.popular();
+
+  //       setNowPlaying(nowPlaying);
+  //       setUpcoming(upcoming);
+  //       setPopular(popular);
+
+  //       console.log(nowPlaying, upcoming, popular);
+  //     } catch {
+  //       setError("Can't find movies information");
+  //     } finally {
+  //       setLoading("false");
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
+  useEffect(() => {
+    console.log("hello Home");
+  }, []);
 
   return (
     <HomePresenter nowPlaying={nowPlaying} upcoming={upcoming} popular={popular} error={error} loading={loading} />

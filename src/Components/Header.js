@@ -25,6 +25,9 @@ const Item = styled.li`
   text-align: center;
   border-bottom: 3px solid ${(props) => (props.current ? "yellow" : "transparent")};
   transition: border-bottom 0.5s ease-in-out;
+  &:hover {
+    border-bottom: 3px solid ${(props) => (!props.current ? "gray" : "yellow")};
+  }
 `;
 
 const SLink = styled(Link)`

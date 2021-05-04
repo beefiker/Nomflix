@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { moviesApi } from "api";
+import React, { useState, useEffect } from "react";
 import SearchPresenter from "./SearchPresenter";
 
 const SearchContainer = () => {
