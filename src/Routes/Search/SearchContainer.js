@@ -7,7 +7,7 @@ const SearchContainer = () => {
   const [movieResults, setMovieResults] = useState([]);
   const [tvResults, setTvResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState([]);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   // useEffect(() => {

@@ -8,9 +8,9 @@ const DetailContainer = (props) => {
   } = props;
   const [isMovie, setIsMovie] = useState(pathname.includes("/movie/"));
   // states
-  const [result, setResult] = useState([]);
-  const [error, setError] = useState([]);
-  const [loading, setLoading] = useState("true");
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,12 +28,11 @@ const DetailContainer = (props) => {
       let result = null;
       try {
         if (isMovie) {
-          const request = await moviesApi.movieDetail(parsedId);
-          result = request.data;
+          ({ data: result } = await moviesApi.movieDetail(parsedId));
         } else {
-          const request = await tvApi.showDetail(parsedId);
-          result = request.data;
+          ({ data: result } = await tvApi.showDetail(parsedId));
         }
+        console.log(result);
       } catch {
         setError("Cant find anything");
       } finally {

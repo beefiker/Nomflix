@@ -7,7 +7,7 @@ const TVContainer = () => {
   const [topRated, setTopRated] = useState([]);
   const [popular, setPopular] = useState([]);
   const [airingToday, setAiringToday] = useState([]);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
