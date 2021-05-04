@@ -1,4 +1,4 @@
-import { tvApi, moviesApi } from "api";
+import { tvApi } from "api";
 import React, { useState, useEffect } from "react";
 import TVPresenter from "./TVPresenter";
 
@@ -11,9 +11,30 @@ const TVContainer = () => {
   const [loading, setLoading] = useState("true");
 
   useEffect(() => {
-    console.log("Hello TV");
-  }, []);
+    const fetchData = async () => {
+      try {
+        const {
+          data: { results: topRated },
+        } = await tvApi.topRated();
+        const {
+          data: { results: popular },
+        } = await tvApi.popular();
+        const {
+          data: { results: airingToday },
+        } = await tvApi.airingToday();
 
+        setTopRated(topRated);
+        setPopular(popular);
+        setAiringToday(airingToday);
+      } catch {
+        setError("Can't find TV Show information");
+      } finally {
+        setLoading("false");
+      }
+    };
+    fetchData();
+  }, []);
+  console.log(topRated, popular, airingToday);
   return (
     <TVPresenter topRated={topRated} popular={popular} airingToday={airingToday} error={error} loading={loading} />
   );
