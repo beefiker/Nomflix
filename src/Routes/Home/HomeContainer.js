@@ -1,6 +1,13 @@
 import { moviesApi } from "api";
 import React, { useState, useEffect } from "react";
 import HomePresenter from "./HomePresenter";
+import styled from "styled-components";
+
+const DIV = styled.div`
+  display: flex;
+  width: 100%;
+  overflow: scroll;
+`;
 
 const HomeContainer = () => {
   // states
@@ -36,7 +43,22 @@ const HomeContainer = () => {
   }, []);
 
   return (
-    <HomePresenter nowPlaying={nowPlaying} upcoming={upcoming} popular={popular} error={error} loading={loading} />
+    <>
+      <h1>nowPlaying</h1>
+      <DIV>
+        {nowPlaying.map((item) => (
+          <HomePresenter nowPlaying={item} error={error} loading={loading} />
+        ))}
+      </DIV>
+
+      <h1>upcoming</h1>
+      <DIV>
+        {upcoming.map((item) => (
+          <HomePresenter upcoming={item} error={error} loading={loading} />
+        ))}
+      </DIV>
+      {/* <HomePresenter nowPlaying={nowPlaying} upcoming={upcoming} popular={popular} error={error} loading={loading} /> */}
+    </>
   );
 };
 
