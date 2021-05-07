@@ -15,21 +15,22 @@ const H1 = styled.h1`
   align-items: center;
 `;
 
-const MovieCompo = ({ nowPlaying, upcoming }) => {
+const Movies = ({ item }) => {
+  return (
+    <DIV>
+      <img src={`https://image.tmdb.org/t/p/w154/${item.poster_path}`} alt="" srcset="" />
+      <H1>{item.title}</H1>
+    </DIV>
+  );
+};
+
+const MovieCompo = ({ nowPlaying, upcoming, popular }) => {
   if (nowPlaying) {
-    return (
-      <DIV>
-        <img src={`https://image.tmdb.org/t/p/w154/${nowPlaying.poster_path}`} alt="" srcset="" />
-        <H1>{nowPlaying.title}</H1>
-      </DIV>
-    );
-  } else {
-    return (
-      <DIV>
-        <img src={`https://image.tmdb.org/t/p/w154/${upcoming.poster_path}`} alt="" srcset="" />
-        <H1>{upcoming.title}</H1>
-      </DIV>
-    );
+    return <Movies item={nowPlaying} />;
+  } else if (upcoming) {
+    return <Movies item={upcoming} />;
+  } else if (popular) {
+    return <Movies item={popular} />;
   }
 };
 

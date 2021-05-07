@@ -57,7 +57,13 @@ const HomeContainer = () => {
           <HomePresenter upcoming={item} error={error} loading={loading} />
         ))}
       </DIV>
-      {/* <HomePresenter nowPlaying={nowPlaying} upcoming={upcoming} popular={popular} error={error} loading={loading} /> */}
+
+      <h1>popular</h1>
+      <DIV>
+        {popular.map((item) => (
+          <HomePresenter popular={item} error={error} loading={loading} />
+        ))}
+      </DIV>
     </>
   );
 };

@@ -8,6 +8,8 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) => {
     return <MovieCompo nowPlaying={nowPlaying} />;
   } else if (upcoming) {
     return <MovieCompo upcoming={upcoming} />;
+  } else if (popular) {
+    return <MovieCompo popular={popular} />;
   }
 };
 
