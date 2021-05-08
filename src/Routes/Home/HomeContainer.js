@@ -43,29 +43,32 @@ const HomeContainer = () => {
   }, []);
 
   return (
-    <>
-      <h1>nowPlaying</h1>
-      <DIV>
-        {nowPlaying.map((item) => (
-          <HomePresenter nowPlaying={item} error={error} loading={loading} />
-        ))}
-      </DIV>
-
-      <h1>upcoming</h1>
-      <DIV>
-        {upcoming.map((item) => (
-          <HomePresenter upcoming={item} error={error} loading={loading} />
-        ))}
-      </DIV>
-
-      <h1>popular</h1>
-      <DIV>
-        {popular.map((item) => (
-          <HomePresenter popular={item} error={error} loading={loading} />
-        ))}
-      </DIV>
-    </>
+    <HomePresenter nowPlaying={nowPlaying} upcoming={upcoming} popular={popular} error={error} loading={loading} />
   );
+  // return (
+  //   <HomePresenter>
+  //     <h1>nowPlaying</h1>
+  //     <DIV>
+  //       {nowPlaying.map((item) => (
+  //         <HomePresenter nowPlaying={item} error={error} loading={loading} />
+  //       ))}
+  //     </DIV>
+
+  //     <h1>upcoming</h1>
+  //     <DIV>
+  //       {upcoming.map((item) => (
+  //         <HomePresenter upcoming={item} error={error} loading={loading} />
+  //       ))}
+  //     </DIV>
+
+  //     <h1>popular</h1>
+  //     <DIV>
+  //       {popular.map((item) => (
+  //         <HomePresenter popular={item} error={error} loading={loading} />
+  //       ))}
+  //     </DIV>
+  //   </HomePresenter>
+  // );
 };
 
 export default HomeContainer;
