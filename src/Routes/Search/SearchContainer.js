@@ -1,5 +1,5 @@
 import { moviesApi, tvApi } from "api";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SearchPresenter from "./SearchPresenter";
 
 const SearchContainer = () => {

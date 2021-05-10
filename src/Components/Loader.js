@@ -13,7 +13,7 @@ const Container = styled.div`
 const Loader = () => {
   return (
     <Container>
-      <span role="img" aria-aria-label="Loading">
+      <span role="img" aria-label="Loading">
         ⏰
       </span>
     </Container>

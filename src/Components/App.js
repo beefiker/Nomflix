@@ -3,7 +3,6 @@ import Router from "Components/Router";
 import GlobalStyles from "./GlobalStyles";
 
 const App = () => {
-  // class App extends Component {
   return (
     <>
       <Router />
