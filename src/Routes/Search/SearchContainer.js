@@ -14,10 +14,19 @@ const SearchContainer = () => {
   //   handleSubmit();
   // }, []);
 
-  let handleSubmit = () => {
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
     if (searchTerm !== "") {
       searchByTerm(searchTerm);
     }
+  };
+
+  let updateTerm = (e) => {
+    const {
+      target: { value },
+    } = e;
+    setSearchTerm(value);
   };
 
   let searchByTerm = async (term) => {
@@ -34,7 +43,7 @@ const SearchContainer = () => {
     } catch {
       setError("Can't find results");
     } finally {
-      setLoading("false");
+      setLoading(false);
     }
   };
 
@@ -46,6 +55,7 @@ const SearchContainer = () => {
       error={error}
       loading={loading}
       handleSubmit={handleSubmit}
+      updateTerm={updateTerm}
     />
   );
 };
