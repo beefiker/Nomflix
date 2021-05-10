@@ -8,8 +8,8 @@ const DetailContainer = (props) => {
   } = props;
   const [isMovie, setIsMovie] = useState(pathname.includes("/movie/"));
   // states
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState(null);
+  const [result, setResult] = useState([]);
+  const [error, setError] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

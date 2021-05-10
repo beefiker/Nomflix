@@ -10,10 +10,6 @@ const SearchContainer = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   handleSubmit();
-  // }, []);
-
   let handleSubmit = (e) => {
     e.preventDefault();
 
