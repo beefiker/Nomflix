@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/nomflix/static/js/main.566072db.chunk.js",
-    "main.js.map": "/nomflix/static/js/main.566072db.chunk.js.map",
-    "runtime-main.js": "/nomflix/static/js/runtime-main.795c7c9b.js",
-    "runtime-main.js.map": "/nomflix/static/js/runtime-main.795c7c9b.js.map",
-    "static/js/2.d1c9a42d.chunk.js": "/nomflix/static/js/2.d1c9a42d.chunk.js",
-    "static/js/2.d1c9a42d.chunk.js.map": "/nomflix/static/js/2.d1c9a42d.chunk.js.map",
-    "index.html": "/nomflix/index.html",
-    "static/js/2.d1c9a42d.chunk.js.LICENSE.txt": "/nomflix/static/js/2.d1c9a42d.chunk.js.LICENSE.txt",
-    "static/media/popcorn.png": "/nomflix/static/media/popcorn.b0227c64.png"
+    "main.js": "/Nomflix/static/js/main.566072db.chunk.js",
+    "main.js.map": "/Nomflix/static/js/main.566072db.chunk.js.map",
+    "runtime-main.js": "/Nomflix/static/js/runtime-main.5953027d.js",
+    "runtime-main.js.map": "/Nomflix/static/js/runtime-main.5953027d.js.map",
+    "static/js/2.636b0de4.chunk.js": "/Nomflix/static/js/2.636b0de4.chunk.js",
+    "static/js/2.636b0de4.chunk.js.map": "/Nomflix/static/js/2.636b0de4.chunk.js.map",
+    "index.html": "/Nomflix/index.html",
+    "static/js/2.636b0de4.chunk.js.LICENSE.txt": "/Nomflix/static/js/2.636b0de4.chunk.js.LICENSE.txt",
+    "static/media/popcorn.png": "/Nomflix/static/media/popcorn.b0227c64.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.795c7c9b.js",
-    "static/js/2.d1c9a42d.chunk.js",
+    "static/js/runtime-main.5953027d.js",
+    "static/js/2.636b0de4.chunk.js",
     "static/js/main.566072db.chunk.js"
   ]
 }
