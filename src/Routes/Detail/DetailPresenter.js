@@ -95,10 +95,10 @@ const VideoContainer = styled.div`
     height: 7px;
 
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.7);
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 6px;
   }
 `;
