@@ -204,7 +204,9 @@ const DetailPresenter = ({ reviews, result, error, loading }) =>
 
             {result.production_countries &&
               result.production_countries.length > 0 &&
-              result.production_countries.map((item, index) => <span>{item.name}</span>)}
+              result.production_countries.map((item, index) =>
+                index === result.production_countries.length - 1 ? item.name : `${item.name} / `
+              )}
           </ItemContainer>
           <Overview>{result.overview}</Overview>
           {result.production_companies && result.production_companies.length && result.production_companies.length > 2 && (
