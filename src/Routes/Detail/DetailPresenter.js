@@ -8,7 +8,8 @@ import Message from "Components/Message";
 const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
-  position: relative;
+  display: flex;
+  flex-direction: column;
   padding: 50px;
 `;
 
@@ -16,13 +17,12 @@ const Content = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  position: relative;
   z-index: 1;
 `;
 
 const Cover = styled.div`
-  width: 30%;
-  height: 100%;
+  width: 20vw;
+  height: 50vh;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
@@ -44,8 +44,8 @@ const Backdrop = styled.div`
 `;
 
 const Data = styled.div`
-  width: 60%;
-  margin-left: 10px;
+  width: 70%;
+  margin-left: 20px;
 `;
 
 const Title = styled.h1`
@@ -82,30 +82,73 @@ const Overview = styled.p`
 const Video = styled.div`
   margin: 20px 20px 0 0;
 `;
+
 const VideoContainer = styled.div`
-  position: absolute;
-  width: 70%;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  bottom: 0;
+  /* flex-wrap: wrap; */
+  overflow: ${(props) => (props.len > 2 ? "scroll" : "none")};
+  &::-webkit-scrollbar {
+    /* 세로 스크롤 넓이 */
+    width: 0px;
+    /* 가로 스크롤 높이 */
+    height: 7px;
+
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 6px;
+  }
+`;
+const CompaniesContainer = styled.div`
+  margin-top: 40px;
+  z-index: 2;
+  width: 100%;
+  /* height: 20%; */
+  flex-direction: column;
+`;
+
+const BottomBorderedTitle = styled.span`
+  font-size: 24px;
+  border-bottom: 2px solid #f5c518;
+  padding-bottom: 2px;
 `;
 
 const Productions = styled.div`
-  width: 20%;
-  height: 10%;
   display: flex;
-  justify-content: center;
+  /* margin-top: 5px; */
 `;
 
 const CompanyLogo = styled.div`
-  width: 25%;
+  width: 15vw;
+  height: 15vh;
+  margin-right: 20px;
   background-image: url(${(props) => `https://image.tmdb.org/t/p/w300${props.logoUrl}`});
-  background-size: 90%;
+  background-size: 70%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
 `;
 
-const DetailPresenter = ({ result, error, loading }) =>
+const Reviews = styled.div`
+  position: relative;
+  font-size: 13px;
+  top: 50px;
+`;
+
+const Reviewer = styled.p`
+  font-size: 15px;
+  font-weight: 500;
+  margin: 20px 0 10px 0px;
+`;
+
+const ReviewContent = styled.p`
+  opacity: 0.7;
+  margin-bottom: 30px;
+`;
+
+const DetailPresenter = ({ reviews, result, error, loading }) =>
   loading ? (
     <>
       <Helmet>
@@ -157,39 +200,63 @@ const DetailPresenter = ({ result, error, loading }) =>
                   index === result.genres.length - 1 ? genre.name : `${genre.name} / `
                 )}
             </Item>
-          </ItemContainer>
+            <Divider>●</Divider>
 
+            {result.production_countries &&
+              result.production_countries.length > 0 &&
+              result.production_countries.map((item, index) => <span>{item.name}</span>)}
+          </ItemContainer>
           <Overview>{result.overview}</Overview>
-          <VideoContainer>
-            {result.videos &&
-              result.videos.results.length >= 1 &&
-              result.videos.results.map((video, index) => {
-                if (index < 2) {
-                  return (
-                    <Video>
-                      <iframe
-                        key={video.key}
-                        src={`https://www.youtube.com/embed/${video.key}`}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </Video>
-                  );
-                }
+          {result.production_companies && result.production_companies.length && result.production_companies.length > 2 && (
+            <CompaniesContainer>
+              <BottomBorderedTitle>Companies</BottomBorderedTitle>
+              <Productions>
+                {result.production_companies &&
+                  result.production_companies.length > 1 &&
+                  result.production_companies.map((item, index) => {
+                    if (item.logo_path !== null && index < 4) {
+                      return <CompanyLogo key={item.id} logoUrl={item.logo_path}></CompanyLogo>;
+                    }
+                  })}
+              </Productions>
+            </CompaniesContainer>
+          )}
+
+          {result.videos && result.videos.results && result.videos.results.length >= 1 && (
+            <VideoContainer len={result.videos.results.length}>
+              {result.videos.results.map((video) => {
+                return (
+                  <Video>
+                    <iframe
+                      key={video.key}
+                      src={`https://www.youtube.com/embed/${video.key}`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </Video>
+                );
               })}
-          </VideoContainer>
+            </VideoContainer>
+          )}
         </Data>
-        <Productions>
-          {result.production_companies &&
-            result.production_companies.length > 1 &&
-            result.production_companies.map((item, index) => {
-              if (item.logo_path !== null && index < 4) {
-                return <CompanyLogo key={item.id} logoUrl={item.logo_path}></CompanyLogo>;
-              }
-            })}
-        </Productions>
       </Content>
+
+      {reviews && reviews.length !== 0 && (
+        <Reviews>
+          <BottomBorderedTitle>Reviews</BottomBorderedTitle>
+          {reviews &&
+            reviews.length > 0 &&
+            reviews.map((item) => {
+              return (
+                <>
+                  <Reviewer>- {item.author}</Reviewer>
+                  <ReviewContent>" {item.content} "</ReviewContent>
+                </>
+              );
+            })}
+        </Reviews>
+      )}
     </Container>
   );
 

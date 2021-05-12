@@ -22,6 +22,12 @@ export const moviesApi = {
         append_to_response: "videos",
       },
     }),
+  movieReviews: (id) =>
+    api.get(`movie/${id}/reviews`, {
+      params: {
+        page: 1,
+      },
+    }),
 };
 
 export const tvApi = {

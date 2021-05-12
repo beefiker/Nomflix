@@ -9,6 +9,7 @@ const DetailContainer = (props) => {
   const [isMovie, setIsMovie] = useState(pathname.includes("/movie/"));
   // states
   const [result, setResult] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,14 +30,17 @@ const DetailContainer = (props) => {
       try {
         if (isMovie) {
           ({ data: result } = await moviesApi.movieDetail(parsedId));
+          const {
+            data: { results: reviews },
+          } = await moviesApi.movieReviews(parsedId);
+          setReviews(reviews);
+          console.log(reviews);
         } else {
           ({ data: result } = await tvApi.showDetail(parsedId));
         }
-        console.log(result);
       } catch {
         setError("Cant find anything");
       } finally {
-        console.log(result);
         setLoading(false);
         setResult(result);
       }
@@ -44,7 +48,7 @@ const DetailContainer = (props) => {
     fetchData();
   }, []);
 
-  return <DetailPresenter result={result} error={error} loading={loading} />;
+  return <DetailPresenter reviews={reviews} result={result} error={error} loading={loading} />;
 };
 
 export default DetailContainer;

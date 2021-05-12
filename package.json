@@ -34,7 +34,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://trusting-pike-b9a018.netlify.app",
+  "homepage": "https://beefiker.github.io/Nomflix",
   "browserslist": {
     "production": [
       ">0.2%",
